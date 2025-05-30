@@ -2,7 +2,8 @@ import streamlit as st
 import requests
 import pandas as pd
 import xml.etree.ElementTree as ET
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta    
+
 
 # Function to fetch and parse SEMO XML data
 def fetch_parse_semo_report(dt: datetime):
@@ -26,7 +27,7 @@ st.title("SEMO 5-Min Imbalance Price Support Report Viewer")
 
 # Separate date and time inputs
 selected_date = st.date_input("Select date")
-selected_time = st.time_input("Select time (5-min increments)", key="selected_time")
+selected_time = st.time_input("Select time (5-min increments)",step=timedelta(minutes=5), key="selected_time")
 
 # Combine into a datetime object
 selected_datetime = datetime.combine(selected_date, selected_time)
